@@ -1,6 +1,6 @@
 CREATE TABLE patients (
     id INT PRIMARY KEY GENERATED  ALWAYS AS IDENTITY,
-    name TEXT,
+    name VARCHAR(255) NOT NULL,
     date_of_birth DATE
 );
 CREATE TABLE medical_histories (
