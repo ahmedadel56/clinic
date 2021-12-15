@@ -1,6 +1,6 @@
 CREATE TABLE patients (
     id INT PRIMARY KEY GENERATED  ALWAYS AS IDENTITY,
-    name TEXT,
+    name VARCHAR(255) NOT NULL,
     date_of_birth DATE
 );
 CREATE TABLE medical_histories (
@@ -40,3 +40,7 @@ CREATE TABLE medical_treatments (
     CONSTRAINT treatment_id FOREIGN KEY(treatment_id) REFERENCES treatments(id),
     CONSTRAINT medical_history_id FOREIGN KEY(medical_history_id) REFERENCES medical_histories(id)
 )
+CREATE INDEX medical_histories_FKIndex on medical_histories (patient_id);
+CREATE INDEX invoices_FKIndex on invoices (medical_history_id);
+CREATE INDEX invoice_items_FKIndex_treatment on invoice_items (treatment_id);
+CREATE INDEX invoice_items_FKIndex_invoice on invoice_items (invoice_id);
